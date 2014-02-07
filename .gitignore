@@ -1,0 +1,13 @@
+/bootstrap/compiled.php
+/vendor
+composer.phar
+#composer.lock
+.env.local.php
+.env.php
+.DS_Store
+Thumbs.db
+.wk
+_composer.json
+*FileUpload*
+*file_upload*
+*sublime*
