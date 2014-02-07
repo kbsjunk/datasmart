@@ -23,6 +23,16 @@ class ValidateController extends BaseController {
 			case 'abn':
 			$valid = Validate::abn()->validate($input);
 			break;
+			case 'isbn':
+			$valid = Validate::isbn()->validate($input);
+			break;
+			case 'ean':
+			$valid = Validate::isbn()->validate($input);
+			break;
+			case 'vat':
+			case 'vatin':
+			$valid = Validate::vat()->validate($input);
+			break;
 			default:
 			return $this->doResponse($response, false);
 		}
