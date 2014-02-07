@@ -19,15 +19,13 @@ class ValidateController extends BaseController {
 			return $this->doResponse(Cache::get($cacheKey), true, true);
 		}
 
-		switch ($against) {
+		switch (strtolower($against)) {
 			case 'abn':
 			$valid = Validate::abn()->validate($input);
 			break;
 			default:
 			return $this->doResponse($response, false);
 		}
-
-		
 
 		$response['valid'] = $valid ? 1 : 0;
 
