@@ -2,19 +2,23 @@
 
 class ValidateController extends BaseController {
 
-	public function doValidate($against, $input = false, $second = false, $third = false, $fourth = false)
+	public function validate($against, $input = false, $second = false, $third = false, $fourth = false)
 	{
 
-		$response = array('against' => $against, 'arguments' = array_filter(array($input, $second, $third, $fourth)));
+		$response = array(
+			'against'   => $against,
+			'input'     => $input,
+			'arguments' => array_filter(array($second, $third, $fourth))
+			);
 
 		try {
-			$response['valid'] = Validate::tell(Validate::abn()->validate('49 781 030 034'));
+			$response['valid'] = Validate::abn()->validate('49 781 030 034') ? 1 : 0;
 		} catch(\InvalidArgumentException $e) {
-			$response['valid'] = 'INVALID';
+			$response['valid'] = 0;
 			$response['error'] = $e->getFullMessage();
 		}
 
-		return Response::json(array($reponse));
+		return Response::json(array($response));
 
 	}
 

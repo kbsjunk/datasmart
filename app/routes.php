@@ -13,7 +13,7 @@
 
 Route::get('/', 'HomeController@showWelcome');
 
-Route::get('validate', 'ValidateController@doValidate');
+Route::get('validate/{against}/{input}/{second?}/{third?}/{fourth?}', 'ValidateController@validate');
 
 
 // Route::resource('upload', 'FileUploadsController');
