@@ -2,7 +2,7 @@
 
 class ValidateController extends BaseController {
 
-	public function doValidate($against, $input = false, $second = false, $third = false, $fourth = false)
+	public function doValidate($against, $input = false, $second = null, $third = null, $fourth = null)
 	{
 
 		$response = array(
@@ -27,7 +27,7 @@ class ValidateController extends BaseController {
 			$valid = Validate::isbn()->validate($input);
 			break;
 			case 'ean':
-			$valid = Validate::isbn()->validate($input);
+			$valid = Validate::ean()->validate($input);
 			break;
 			case 'vat':
 			case 'vatin':
@@ -40,7 +40,12 @@ class ValidateController extends BaseController {
 			$valid = Validate::alpha($second)->validate($input);
 			break;
 			case 'between':
-			$valid = Validate::between($second, $third, $fourth)->validate($input);
+			if ($second && $third) {
+				$valid = Validate::between($second, $third, $fourth)->validate($input);
+			}
+			else {
+				return $this->doResponse($response, false);
+			}
 			break;
 			case 'bool':
 			$valid = Validate::bool()->validate($input);
