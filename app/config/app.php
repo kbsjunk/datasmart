@@ -177,6 +177,7 @@ return array(
 		// 'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'Validate'		  => 'Kitbs\Datasmart\Validate\Validate',
 		'View'            => 'Illuminate\Support\Facades\View',
+		'Carbon'            => 'Carbon\Carbon',
 
 	),
 

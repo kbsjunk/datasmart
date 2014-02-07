@@ -32,7 +32,7 @@ class Validate extends Respect {
     }
 
     public static function tell($validated) {
-        return $validated ? 'VALID' : 'INVALID'; 
+        return $validated ? 'valid' : 'invalid'; 
     }
 
 }
