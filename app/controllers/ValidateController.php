@@ -16,16 +16,18 @@ class ValidateController extends BaseController {
 		//Cache::forget($cacheKey);
 
 		if (Cache::has($cacheKey)) {
-
 			return $this->doResponse(Cache::get($cacheKey), true, true);
 		}
 
-		try {
-			$response['valid'] = Validate::abn()->validate('49 781 030 034') ? 1 : 0;
-		} catch(\InvalidArgumentException $e) {
-			$response['valid'] = 0;
-			$response['error'] = $e->getFullMessage();
-		}
+		$valid = Validate::abn()->validate($input);
+
+		$response['valid'] = $valid ? 1 : 0;
+
+
+		// } catch(\InvalidArgumentException $e) {
+		// 	$response['valid'] = 0;
+		// 	$response['error'] = $e->getFullMessage();
+		// }
 
 		Cache::put($cacheKey, array(Carbon::now()->toDateTimeString(), $response), 10);
 

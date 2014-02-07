@@ -14,3 +14,4 @@
 Route::get('/', 'HomeController@showWelcome');
 
 Route::get('validate/{against}/{input}/{second?}/{third?}/{fourth?}', 'ValidateController@doValidate');
+Route::post('validate/{against}/{input}/{second?}/{third?}/{fourth?}', 'ValidateController@doValidate');
