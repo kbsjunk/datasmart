@@ -13,4 +13,6 @@
 
 Route::get('/', 'HomeController@showWelcome');
 
-Route::any('validate/{against}/{input}/{second?}/{third?}/{fourth?}', 'ValidateController@doValidate');
+Route::any('validate.{format}/{against}/{input}/{second?}/{third?}/{fourth?}', 'ValidateController@doValidate');
+
+// Route::any('format/{against}/{input}/{second?}/{third?}/{fourth?}', 'ValidateController@doFormat');

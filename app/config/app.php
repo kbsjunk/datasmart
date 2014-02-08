@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'debug' => false,
+	'debug' => true,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -176,6 +176,7 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		// 'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'Validate'		  => 'Kitbs\Datasmart\Validate\Validate',
+		'Format'		  => 'Kitbs\Datasmart\Validate\Format',
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Carbon'            => 'Carbon\Carbon',
 
