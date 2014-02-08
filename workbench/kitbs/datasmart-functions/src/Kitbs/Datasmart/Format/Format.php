@@ -6,7 +6,11 @@ use Illuminate\Support\Facades\Config;
 class Format extends Validate {
 
     public function format($input) {
-        return $input;
+        $obj = array_shift($this->rules);
+
+        if (method_exists($obj, 'format')) {
+            return $obj->format($input);
+        }
     }
 
 }

@@ -1,13 +1,26 @@
 <?php
 
 use Kitbs\Datasmart\Format\Format;
+use Kitbs\Datasmart\Barcode\Barcode;
 
-class ValidateController extends BaseController {
+class DatasmartController extends BaseController {
 
 	public $cache;
 
 	public function __construct() {
 		$this->cache = Config::get('datasmart::cache');
+	}
+
+	public function doBarcode($against, $input = false, $mime = '.png')
+	{
+
+		if (!Barcode::allowed($against)) {
+			App::abort(404);
+		}
+		else {
+			Barcode::create($against, $input, $mime);
+		}	
+
 	}
 
 	public function doValidate($mime = '.json', $against, $input = false, $second = null, $third = null, $fourth = null)
@@ -18,13 +31,16 @@ class ValidateController extends BaseController {
 		$response = array(
 			'against'   => $against,
 			'input'     => $input,
-			'arguments' => $arguments,
 			);
+
+		if (count($arguments)) {
+			$response['arguments'] = $arguments;
+		}
 
 		if ($this->cache) {
 			$cacheKey = 'validate::'.md5(serialize($response));
 
-			// Cache::forget($cacheKey);
+			Cache::forget($cacheKey);
 
 			if (Cache::has($cacheKey)) {
 				return $this->doResponse($mime, Cache::get($cacheKey), true, true);

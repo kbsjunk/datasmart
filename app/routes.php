@@ -13,6 +13,8 @@
 
 Route::get('/', 'HomeController@showWelcome');
 
-Route::any('validate.{format}/{against}/{input}/{second?}/{third?}/{fourth?}', 'ValidateController@doValidate');
+Route::any('validate.{format}/{against}/{input}/{second?}/{third?}/{fourth?}', 'DatasmartController@doValidate');
+
+Route::any('barcode/{against}/{input}.{format}', 'DatasmartController@doBarcode');
 
 // Route::any('format/{against}/{input}/{second?}/{third?}/{fourth?}', 'ValidateController@doFormat');

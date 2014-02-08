@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "d7069caab06a9ea6c3c8f3108255c560",
+    "hash": "03b4d66266330a1e4de4e1565a2b9912",
     "packages": [
         {
             "name": "illuminate/support",
@@ -227,6 +227,99 @@
                 "validator"
             ],
             "time": "2014-01-29 01:34:15"
+        },
+        {
+            "name": "zendframework/zend-barcode",
+            "version": "2.2.5",
+            "target-dir": "Zend/Barcode",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/Component_ZendBarcode.git",
+                "reference": "a77949c613d2607eda655f46be99e3e3930bf92b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendBarcode/zipball/a77949c613d2607eda655f46be99e3e3930bf92b",
+                "reference": "a77949c613d2607eda655f46be99e3e3930bf92b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "zendframework/zend-stdlib": "self.version"
+            },
+            "require-dev": {
+                "zendframework/zendpdf": "*"
+            },
+            "suggest": {
+                "zendframework/zend-validator": "Zend\\Validator component",
+                "zendframework/zendpdf": "ZendPdf component"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev",
+                    "dev-develop": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Zend\\Barcode\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "provides a generic way to generate barcodes",
+            "keywords": [
+                "barcode",
+                "zf2"
+            ],
+            "time": "2013-09-06 15:00:11"
+        },
+        {
+            "name": "zendframework/zend-stdlib",
+            "version": "2.2.5",
+            "target-dir": "Zend/Stdlib",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/Component_ZendStdlib.git",
+                "reference": "f440ecfc828d61d620662a03987c8287e1e4801e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendStdlib/zipball/f440ecfc828d61d620662a03987c8287e1e4801e",
+                "reference": "f440ecfc828d61d620662a03987c8287e1e4801e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "zendframework/zend-eventmanager": "To support aggregate hydrator usage",
+                "zendframework/zend-servicemanager": "To support hydrator plugin manager usage"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev",
+                    "dev-develop": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Zend\\Stdlib\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "keywords": [
+                "stdlib",
+                "zf2"
+            ],
+            "time": "2013-10-20 06:00:20"
         }
     ],
     "packages-dev": [
@@ -238,7 +331,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "respect/validation": 20,
-        "malenki/codevro": 20
+        "malenki/codevro": 20,
+        "zendframework/zend-barcode": 20
     },
     "platform": {
         "php": ">=5.3.0"
