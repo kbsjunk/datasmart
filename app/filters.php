@@ -96,16 +96,23 @@ Route::filter('csrf', function()
 
 Route::filter('checkEntity', function()
 {
-	if (!Datasmart::checkEntityFunction(Route::input('entity'), Route::input('function'))) {
-		return Response::jsend(false, false, array('errorMessage' => 'Entity function not found.', 'format' => Route::input('format')));
+	$entity = Route::input('entity');
+	$function = Route::input('function');
+
+	if (!Datasmart::checkEntityFunction($entity, $function)) {
+		return Response::jsend(false, false, array('errorMessage' =>  "Entity function '$function/$entity' not found.", 'format' => Route::input('format')));
 	}
 
 });
 
 Route::filter('checkFormat', function()
 {
-	if (!in_array(Route::input('format'), array('json','xml'))) {
-		return Response::jsend(false, false, array('errorMessage' => 'Response format is invalid.', 'format' => 'txt'));
+	$format = Route::input('format');
+	$formats = array('json','xml');
+
+	if (!in_array($format, $formats)) {
+		$formats = implode('\', \'', $formats);
+		return Response::jsend(false, false, array('errorMessage' => "Response format '$format' is invalid. Valid formats are '$formats'.", 'format' => 'txt'));
 	}
 
 });

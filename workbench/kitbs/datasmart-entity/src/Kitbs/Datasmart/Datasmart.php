@@ -16,12 +16,14 @@ class Datasmart {
 		return (bool) array_get($this->config, "entities.$entity.allowed.$function");
 	}
 
-	public function getEntity($entity)
+	public function instantiate($entity, $value = false)
 	{
 		if ($class = array_get($this->config, "entities.$entity.class")) {
 			$class = "Kitbs\\Datasmart\\Entity\\$class";
-			return new $class;
+			return new $class($value);
 		}
 	}
+
+
 	
 }

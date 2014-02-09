@@ -11,8 +11,10 @@ return array(
 			'class'     => 'AbstractEntity',
 			'allowed'    => array(
 				'validate'  => TRUE,
+				'format'    => TRUE,
 				'lookup'    => TRUE,
 				'transform' => TRUE,
+				'convert'   => TRUE,
 				'derive'    => TRUE,
 				'barcode'   => TRUE,
 				),
@@ -23,8 +25,10 @@ return array(
 			'class'     => 'Abn',
 			'allowed'    => array(
 				'validate'  => TRUE,
+				'format'    => TRUE,
 				'lookup'    => TRUE,
 				'transform' => FALSE,
+				'convert'   => FALSE,
 				'derive'    => FALSE,
 				'barcode'   => FALSE,
 				),

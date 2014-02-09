@@ -13,7 +13,7 @@
  *
  */
 
-Response::macro('jsend', function($data, $success, $options = array())
+Response::macro('jsend', function($data, $success = true, $options = array())
 {
 	$defaultOptions = array(
 		'format'       => 'json',
