@@ -14,12 +14,14 @@
 App::before(function($request)
 {
 	//
+
 });
 
 
 App::after(function($request, $response)
 {
 	//
+
 });
 
 /*
@@ -36,12 +38,14 @@ App::after(function($request, $response)
 Route::filter('auth', function()
 {
 	if (Auth::guest()) return Redirect::guest('login');
+
 });
 
 
 Route::filter('auth.basic', function()
 {
 	return Auth::basic('username');
+
 });
 
 /*
@@ -58,6 +62,7 @@ Route::filter('auth.basic', function()
 Route::filter('guest', function()
 {
 	if (Auth::check()) return Redirect::to('/');
+
 });
 
 /*
@@ -77,4 +82,30 @@ Route::filter('csrf', function()
 	{
 		throw new Illuminate\Session\TokenMismatchException;
 	}
+
+});
+
+/*
+|--------------------------------------------------------------------------
+| Datasmart Filters
+|--------------------------------------------------------------------------
+|
+| The following filters are used to verify that the entities and functions in a request exist.
+|
+*/
+
+Route::filter('checkEntity', function()
+{
+	if (!Datasmart::checkEntityFunction(Route::input('entity'), Route::input('function'))) {
+		return Response::jsend(false, false, array('errorMessage' => 'Entity function not found.', 'format' => Route::input('format')));
+	}
+
+});
+
+Route::filter('checkFormat', function()
+{
+	if (!in_array(Route::input('format'), array('json','xml'))) {
+		return Response::jsend(false, false, array('errorMessage' => 'Response format is invalid.', 'format' => 'txt'));
+	}
+
 });

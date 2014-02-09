@@ -13,13 +13,9 @@
 
 Route::get('/', 'HomeController@showWelcome');
 
-Route::group(array('prefix' => 'api/v1', 'before' => 'auth.basic'), function()
+Route::group(array('prefix' => 'api/v1', 'before' => array('auth.basic', 'checkFormat', 'checkEntity')), function()
 {
 
-    Route::get('validate/{entity}', 'DatasmartController@doValidate');
-
-    Route::post('lookup/{entity}', 'DatasmartController@doLookup');
-
-    // Route::post('lookup/{entity}', 'DatasmartController@doValidate');
+	Route::get('{function}/{entity}.{format}', 'DatasmartController@doFunction');
 
 });

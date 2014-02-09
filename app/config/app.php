@@ -109,10 +109,10 @@ return array(
 		
 		'Way\Generators\GeneratorsServiceProvider',
 
-		// 'Kitbs\Datasmart\ValidateServiceProvider',
+		'Kitbs\Datasmart\DatasmartServiceProvider',
 		// 'Kitbs\PhpQrCode\PhpQrCodeServiceProvider',
 
-	),
+		),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -178,9 +178,10 @@ return array(
 		// 'Validator'       => 'Illuminate\Support\Facades\Validator',
 		// 'Validate'		  => 'Kitbs\Datasmart\Validate\Validate',
 		// 'Format'		  => 'Kitbs\Datasmart\Validate\Format',
+		'Datasmart'       => 'Kitbs\Datasmart\Facades\Datasmart',
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Carbon'            => 'Carbon\Carbon',
 
-	),
+		),
 
 );

@@ -7,9 +7,11 @@ class DatasmartController extends BaseController {
 	 *
 	 * @return Response
 	 */
-	public function doValidate($entity)
+	public function doFunction($function, $entity)
 	{
-        $entity = Datasmart::checkEntity($entity);
+        if ($entity = Datasmart::getEntity($entity)) {
+        	dd($entity->getFormat());
+        }
 	}
 
 }

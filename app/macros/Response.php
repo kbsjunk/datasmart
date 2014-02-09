@@ -27,10 +27,13 @@ Response::macro('jsend', function($data, $success, $options = array())
 	$payload = array();
 
 	if ($options['errorMessage']) {
+		$statusCode = 404;
 		$payload['status'] = 'error';
 		$payload['message'] = $options['errorMessage'];
+		if ($options['errorCode']) $payload['code'] = $options['errorCode'];
 	}
 	else {
+		$statusCode = $success ? 200 : 400;
 		$payload['status'] = $success ? 'success' : 'fail';
 	}
 
@@ -46,11 +49,20 @@ Response::macro('jsend', function($data, $success, $options = array())
 
 	switch ($options['format']) {
 		case 'json':
-		return Response::json($payload);
+		return Response::json($payload, $statusCode);
 		break;
 
 		case 'xml':
-		return Response::xml($payload);
+		return Response::xml($payload, $statusCode);
+		break;
+
+		case 'txt':
+		if ($payload['status'] == 'error') {
+			return Response::make($payload['message'], $statusCode);
+		}
+		else {
+			return Response::make(array_flatten(@$payload['data']), $statusCode);
+		}
 		break;
 
 		default:
@@ -74,13 +86,22 @@ Response::macro('jsend', function($data, $success, $options = array())
  * @return	Response
  */
 
-Response::macro('xml', function($value)
+Response::macro('xml', function($data, $status = 200, $headers = array())
 {
-	$contents = array_to_xml($value);
-	$response = Response::make($contents, 200);
+
+	array_forget($headers, 'Content-Type');
+
+	$contents = array_to_xml($data);
+	$response = Response::make($contents, $status);
 	$response->header('Content-Type', 'application/xml');
+	if (is_array($headers)) {
+		foreach ($headers as $key => $value) {
+			$response->header($key, $value);
+		}
+	}
 
 	return $response;
+
 });
 
 /**

@@ -7,9 +7,9 @@ return array(
 	'entities' => array(
 
 		'@default' => array(
-			'namespace' => 'Kitbs\\Datasmart\\Entity\\',
-			'class'     => 'Default',
-			'allows'    => array(
+			// 'namespace' => 'Kitbs\\Datasmart\\Entity\\',
+			'class'     => 'AbstractEntity',
+			'allowed'    => array(
 				'validate'  => TRUE,
 				'lookup'    => TRUE,
 				'transform' => TRUE,
@@ -19,9 +19,9 @@ return array(
 			),
 
 		'abn' => array(
-			'namespace' => 'Kitbs\\Datasmart\\Entity\\',
+			// 'namespace' => 'Kitbs\\Datasmart\\Entity\\',
 			'class'     => 'Abn',
-			'allows'    => array(
+			'allowed'    => array(
 				'validate'  => TRUE,
 				'lookup'    => TRUE,
 				'transform' => FALSE,
