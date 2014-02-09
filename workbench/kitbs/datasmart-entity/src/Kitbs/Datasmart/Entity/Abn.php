@@ -1,13 +1,47 @@
 <?php namespace Kitbs\Datasmart\Entity;
 
+use Kitbs\Datasmart\Lookup\Abn as AbnLookup;
+use Illuminate\Support\Facades\Config;
+
+// use Kitbs\Datasmart\Exception\WebserviceException;
+
 class Abn extends AbstractEntity {
 
 	public $allowedChars = '0';
 	public $allowedFormat = '00 000 000 000';
 
+	public function lookup() {
+
+		$lookup = new AbnLookup(false);
+		//Config::get('datasmart::apikey.abrlookup'));
+
+		try {
+			$results = $lookup->searchByAbn($this->getValue());
+
+			if ($results) {
+				if (isset($results->ABRPayloadSearchResults->response->exception)) {
+					throw new WebserviceException($results->ABRPayloadSearchResults->response->exception->exceptionDescription);
+				}
+			// $businessEntity = $results->ABRPayloadSearchResults->response->businessEntity;
+
+			// $response = array(
+			// 	'legalName' => ucwords(strtolower(@$businessEntity->mainName->organisationName)),
+			// 	'tradingName' => ucwords(strtolower(@$businessEntity->mainTradingName->organisationName))
+			// 	);
+			}
+			else {
+
+			}
+
+		} catch	(Exception $e){
+			throw $e;
+		}
+
+		return $response;
+	}
+
 	public function customValidate()
 	{
-
 		$input = $this->unformat();
 		$inputLen = strlen($input);
 

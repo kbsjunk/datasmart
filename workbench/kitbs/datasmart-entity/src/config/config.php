@@ -4,6 +4,10 @@ return array(
 
 	'cache' => true,
 
+	'apikey' => array(
+		'abrlookup' => '79384bf8-8837-4cfd-964c-a20aee8cc91a'
+		),
+
 	'entities' => array(
 
 		'@default' => array(

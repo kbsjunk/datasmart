@@ -1,5 +1,7 @@
 <?php
 
+use Kitbs\Datasmart\Exception\WebserviceException;
+
 class DatasmartController extends BaseController {
 
 	/**
@@ -24,10 +26,12 @@ class DatasmartController extends BaseController {
 				$response['result'] = $result;
 				return Response::jsend($response);
 			}
-			catch (Exception $e) {
-				// Silent
+			catch (WebserviceException $e) {
+				return Response::jsend($response, true, array('errorMessage' => "An error occurred while ."));
 			}
-		
+			catch (Exception $e) {
+				return Response::jsend($response, true, array('errorMessage' => "An error occurred while ."));
+			}
 		}
 
 		return Response::jsend($response, true, array('errorMessage' => "Entity function '$function/$entity' not found."));

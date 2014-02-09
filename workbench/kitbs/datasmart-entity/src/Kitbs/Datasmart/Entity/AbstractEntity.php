@@ -30,10 +30,7 @@ abstract class AbstractEntity {
 		return $this->validatesBy()->validate($this->value);
 	}
 
-	public function lookup()
-	{
-		return 'parent';
-	}
+	public function lookup() { return array(); }
 
 	// public function validateWhy()
 	// {
