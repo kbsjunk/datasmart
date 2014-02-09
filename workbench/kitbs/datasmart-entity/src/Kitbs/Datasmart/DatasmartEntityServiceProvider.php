@@ -2,7 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 
-class ValidateServiceProvider extends ServiceProvider {
+class DatasmartServiceProvider extends ServiceProvider {
 
 	/**
 	 * Indicates if loading of the provider is deferred.
@@ -28,7 +28,7 @@ class ValidateServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-
+		//
 	}
 
 	/**
