@@ -13,12 +13,13 @@
 
 Route::get('/', 'HomeController@showWelcome');
 
-Route::any('validate.{format}/{against}/{input}/{second?}/{third?}/{fourth?}', 'DatasmartController@doValidate');
+Route::group(array('prefix' => 'api/v1', 'before' => 'auth.basic'), function()
+{
 
-Route::get('barcode/{against}/{size}/{input}.{format}', 'DatasmartController@doBarcode');
-Route::get('barcode/{against}/{input}.{format}', 'DatasmartController@doBarcodeNoSize');
+    Route::get('validate/{entity}', 'DatasmartController@doValidate');
 
+    Route::post('lookup/{entity}', 'DatasmartController@doLookup');
 
-Route::post('barcode/{against}.{format}', 'DatasmartController@doBarcodePost');
+    // Route::post('lookup/{entity}', 'DatasmartController@doValidate');
 
-// Route::any('format/{against}/{input}/{second?}/{third?}/{fourth?}', 'ValidateController@doFormat');
+});

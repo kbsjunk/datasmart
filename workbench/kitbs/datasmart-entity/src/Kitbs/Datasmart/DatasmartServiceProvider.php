@@ -28,7 +28,10 @@ class DatasmartServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+		$this->app['datasmart'] = $this->app->share(function($app)
+		{
+			return new Datasmart;
+		});
 	}
 
 	/**
@@ -38,7 +41,7 @@ class DatasmartServiceProvider extends ServiceProvider {
 	 */
 	public function provides()
 	{
-		return array();
+		return array('datasmart');
 	}
 
 }
