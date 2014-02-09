@@ -15,6 +15,10 @@ Route::get('/', 'HomeController@showWelcome');
 
 Route::any('validate.{format}/{against}/{input}/{second?}/{third?}/{fourth?}', 'DatasmartController@doValidate');
 
-Route::any('barcode/{against}/{input}.{format}', 'DatasmartController@doBarcode');
+Route::get('barcode/{against}/{size}/{input}.{format}', 'DatasmartController@doBarcode');
+Route::get('barcode/{against}/{input}.{format}', 'DatasmartController@doBarcodeNoSize');
+
+
+Route::post('barcode/{against}.{format}', 'DatasmartController@doBarcodePost');
 
 // Route::any('format/{against}/{input}/{second?}/{third?}/{fourth?}', 'ValidateController@doFormat');

@@ -13,7 +13,8 @@
         "respect/validation": "dev-master",
         "malenki/codevro": "dev-master",
         "zendframework/zend-barcode": "2.2.*@dev",
-        "zendframework/zend-servicemanager": "2.3.*@dev"
+        "zendframework/zend-servicemanager": "2.3.*@dev",
+        "zendframework/zend-validator": "*"
     },
     "autoload": {
         "classmap": [

@@ -110,6 +110,7 @@ return array(
 		'Way\Generators\GeneratorsServiceProvider',
 
 		'Kitbs\Datasmart\ValidateServiceProvider',
+		'Kitbs\PhpQrCode\PhpQrCodeServiceProvider',
 
 	),
 

@@ -122,6 +122,7 @@ return array(
             'royalmail',
             'upca',
             'upce',
+            // 'qr',
         ),
         
     ),

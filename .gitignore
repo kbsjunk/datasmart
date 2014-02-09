@@ -10,5 +10,7 @@ Thumbs.db
 _composer.json
 *FileUpload*
 *file_upload*
+app/storage/imagecache
+app/storage/cache
 *sublime*
 *.bkp*

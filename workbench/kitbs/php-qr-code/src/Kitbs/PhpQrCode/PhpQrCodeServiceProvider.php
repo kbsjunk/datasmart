@@ -1,8 +1,8 @@
-<?php namespace Kitbs\Datasmart;
+<?php namespace Kitbs\PhpQrCode;
 
 use Illuminate\Support\ServiceProvider;
 
-class ValidateServiceProvider extends ServiceProvider {
+class PhpQrCodeServiceProvider extends ServiceProvider {
 
 	/**
 	 * Indicates if loading of the provider is deferred.
@@ -18,7 +18,8 @@ class ValidateServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('kitbs/datasmart');
+		$this->package('kitbs/phpqrcode');
+		 include __DIR__.'/PhpQrCode/qrlib.php';
 	}
 
 	/**
@@ -28,7 +29,7 @@ class ValidateServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-
+		//
 	}
 
 	/**
