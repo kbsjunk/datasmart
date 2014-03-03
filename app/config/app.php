@@ -111,7 +111,7 @@ return array(
 		'Rocketeer\RocketeerServiceProvider',
 		'JasonNZ\LaravelGrunt\LaravelGruntServiceProvider',
 
-		'Kitbs\Datasmart\DatasmartServiceProvider',
+		// 'Kitbs\Datasmart\DatasmartServiceProvider',
 		// 'Kitbs\PhpQrCode\PhpQrCodeServiceProvider',
 
 		),

@@ -22,7 +22,7 @@
 	// Tasks to execute after the core Rocketeer Tasks
 	'after' => array(
 		'setup'   => array(),
-		'deploy'  => array(),
+		'deploy'  => array('composer dump-autoload -d workbench/kitbs/datasmart-entity'),
 		'cleanup' => array(),
 	),
 
