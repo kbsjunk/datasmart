@@ -14,7 +14,7 @@
 
 	// Tasks to execute before the core Rocketeer Tasks
 	'before' => array(
-		'setup'   => array(),
+		'setup'   => array('composer dump-autoload -d workbench/kitbs/datasmart-entity'),
 		'deploy'  => array(),
 		'cleanup' => array(),
 	),
@@ -22,7 +22,7 @@
 	// Tasks to execute after the core Rocketeer Tasks
 	'after' => array(
 		'setup'   => array(),
-		'deploy'  => array('composer dump-autoload -d workbench/kitbs/datasmart-entity'),
+		'deploy'  => array(),
 		'cleanup' => array(),
 	),
 
