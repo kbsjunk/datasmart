@@ -14,3 +14,5 @@ app/storage/imagecache
 app/storage/cache
 *sublime*
 *.bkp*
+/node_modules
+/assets

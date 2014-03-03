@@ -5,8 +5,12 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.1.*",
-		"way/generators": "1.0.*@dev",
-		"fabpot/goutte": "1.0.*@dev"
+		"fabpot/goutte": "1.0.*@dev",
+		"anahkiasen/rocketeer": "dev-master",
+		"way/generators": "dev-master"
+	},
+	"require-dev": {
+		"jason-morton-nz/laravel-grunt": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

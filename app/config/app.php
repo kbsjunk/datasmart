@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost',
+	'url' => 'http://datasmart.loc',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -108,6 +108,8 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		
 		'Way\Generators\GeneratorsServiceProvider',
+		'Rocketeer\RocketeerServiceProvider',
+		'JasonNZ\LaravelGrunt\LaravelGruntServiceProvider',
 
 		'Kitbs\Datasmart\DatasmartServiceProvider',
 		// 'Kitbs\PhpQrCode\PhpQrCodeServiceProvider',
@@ -177,6 +179,9 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		// 'Validator'       => 'Illuminate\Support\Facades\Validator',
 		// 'Validate'		  => 'Kitbs\Datasmart\Validate\Validate',
+
+		'Rocketeer' => 'Rocketeer\Facades\Rocketeer',
+
 		'Validate'		  => 'Respect\Validation\Validator',
 		'Datasmart'       => 'Kitbs\Datasmart\Facades\Datasmart',
 		'View'            => 'Illuminate\Support\Facades\View',

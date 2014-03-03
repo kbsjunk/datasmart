@@ -29,12 +29,12 @@ return array(
 	'connections' => array(
 
 		'production' => array(
-			'host'      => '',
-			'username'  => '',
-			'password'  => '',
+			'host'      => 'oak.dreamhost.com',
+			'username'  => 'kitbs',
+			'password'  => 'loveb0z0',
 			'key'       => '',
 			'keyphrase' => '',
-			'root'      => '/var/www',
+			'root'      => '/home/kitbs',
 		),
 
 	),

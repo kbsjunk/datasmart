@@ -1,7 +1,10 @@
 <?php namespace Kitbs\Datasmart\Entity;
 
-use Respect\Validation\Validator as Validate;
+use Kitbs\Datasmart\Exception\WebserviceException;
+use Kitbs\Datasmart\Exception\EntityFunctionNotFoundException;
 
+use Respect\Validation\Validator as Validate;
+	
 abstract class AbstractEntity {
 
 	private $value;
@@ -15,7 +18,7 @@ abstract class AbstractEntity {
 			return call_user_func_array(array(&$this, $function), $params);
 		}
 
-		throw new \Exception;
+		throw new EntityFunctionNotFoundException("$function/".strtolower(get_class($this)));
 	}
 
 	public function validatesBy()

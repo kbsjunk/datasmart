@@ -1,6 +1,7 @@
 <?php namespace Kitbs\Datasmart;
 
 use Illuminate\Support\Facades\Config;
+use Kitbs\Datasmart\Exception\EntityFunctionNotFoundException;
 
 class Datasmart {
 
@@ -13,10 +14,14 @@ class Datasmart {
 
 	public function checkEntityFunction($entity, $function)
 	{
-		return (bool) array_get($this->config, "entities.$entity.allowed.$function");
+		if (array_get($this->config, "entities.$entity.allowed.$function")) {
+			return true;
+		}
+
+		throw new EntityFunctionNotFoundException("$function/$entity");
 	}
 
-	public function instantiate($entity, $value = false)
+	public function factory($entity, $value = false)
 	{
 		if ($class = array_get($this->config, "entities.$entity.class")) {
 			$class = "Kitbs\\Datasmart\\Entity\\$class";

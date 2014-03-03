@@ -1,5 +1,7 @@
 <?php
 
+use Kitbs\Datasmart\Exception\EntityFunctionNotFoundException;
+
 /*
 |--------------------------------------------------------------------------
 | Application & Route Filters
@@ -99,8 +101,11 @@ Route::filter('checkEntity', function()
 	$entity = Route::input('entity');
 	$function = Route::input('function');
 
-	if (!Datasmart::checkEntityFunction($entity, $function)) {
-		return Response::jsend(false, false, array('errorMessage' =>  "Entity function '$function/$entity' not found.", 'format' => Route::input('format')));
+	try {
+		Datasmart::checkEntityFunction($entity, $function);
+	}
+	catch (EntityFunctionNotFoundException $e) {
+		return Response::jsend(false, true, array('errorMessage' => $e->getMessage()));
 	}
 
 });

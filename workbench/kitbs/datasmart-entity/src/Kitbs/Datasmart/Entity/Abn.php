@@ -1,9 +1,10 @@
 <?php namespace Kitbs\Datasmart\Entity;
 
+use Kitbs\Datasmart\Exception\WebserviceException;
+use Kitbs\Datasmart\Exception\EntityFunctionNotFoundException;
+
 use Kitbs\Datasmart\Lookup\Abn as AbnLookup;
 use Illuminate\Support\Facades\Config;
-
-// use Kitbs\Datasmart\Exception\WebserviceException;
 
 class Abn extends AbstractEntity {
 
@@ -12,8 +13,7 @@ class Abn extends AbstractEntity {
 
 	public function lookup() {
 
-		$lookup = new AbnLookup(false);
-		//Config::get('datasmart::apikey.abrlookup'));
+		$lookup = new AbnLookup(Config::get('datasmart::apikey.abrlookup'));
 
 		try {
 			$results = $lookup->searchByAbn($this->getValue());
@@ -22,12 +22,7 @@ class Abn extends AbstractEntity {
 				if (isset($results->ABRPayloadSearchResults->response->exception)) {
 					throw new WebserviceException($results->ABRPayloadSearchResults->response->exception->exceptionDescription);
 				}
-			// $businessEntity = $results->ABRPayloadSearchResults->response->businessEntity;
-
-			// $response = array(
-			// 	'legalName' => ucwords(strtolower(@$businessEntity->mainName->organisationName)),
-			// 	'tradingName' => ucwords(strtolower(@$businessEntity->mainTradingName->organisationName))
-			// 	);
+				$response = $results->ABRPayloadSearchResults->response->businessEntity;
 			}
 			else {
 

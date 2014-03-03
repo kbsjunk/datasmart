@@ -1,5 +1,7 @@
 <?php namespace Kitbs\Datasmart\Exception;
 
+use Exception;
+
 class WebserviceException extends Exception
 {
 	public function __construct($message = false, $code = 0, Exception $previous = null) {
